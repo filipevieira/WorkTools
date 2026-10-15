@@ -1,12 +1,7 @@
 import requests
-import configparser
+from config import load_credentials
 
-# Carregar as chaves do arquivo Chaves.ini
-config = configparser.ConfigParser()
-config.read('Chaves.ini')
-
-app_key = config.get('API', 'app_key')
-app_secret = config.get('API', 'app_secret')
+app_key, app_secret = load_credentials()
 
 # Obtenha os IDs do usuário separados por vírgula
 ids_input = input("Informe os números de IDs separados por vírgula: ")
