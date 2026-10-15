@@ -18,3 +18,13 @@ Me chama na DM
 
 ## Licença 📄
 Este projeto está sob a licença livre.
+
+### Configuração de credenciais 🔐
+As credenciais não são armazenadas no repositório. Antes de executar os scripts,
+defina as variáveis de ambiente correspondentes (consulte `.env.example`):
+
+- `OMIE_APP_KEY` e `OMIE_APP_SECRET` para os scripts de ajustes.
+- `OMIE_APP_KEY_PV` e `OMIE_APP_SECRET_PV` para `PesquisarPV_v3.py`.
+
+Se alguma variável obrigatória estiver ausente, o script será interrompido com uma
+mensagem indicando qual configuração precisa ser definida.

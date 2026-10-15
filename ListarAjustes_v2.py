@@ -1,14 +1,9 @@
 import requests
 import json
 from tqdm import tqdm
-import configparser
+from config import load_credentials
 
-# Carregar as chaves do arquivo Chaves.ini
-config = configparser.ConfigParser()
-config.read('Chaves.ini')
-
-app_key = config.get('API', 'app_key')
-app_secret = config.get('API', 'app_secret')
+app_key, app_secret = load_credentials()
 
 url = "https://app.omie.com.br/api/v1/estoque/ajuste/"
 headers = {'Content-type': 'application/json'}

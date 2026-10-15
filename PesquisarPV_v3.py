@@ -2,14 +2,9 @@ import requests
 from tqdm import tqdm
 import json
 from datetime import datetime
-import configparser
+from config import load_credentials
 
-# Carregar as chaves do arquivo Chaves.ini
-config = configparser.ConfigParser()
-config.read('Chaves.ini')
-
-app_key = config.get('API', 'app_key_pv')
-app_secret = config.get('API', 'app_secret_pv')
+app_key, app_secret = load_credentials("pv")
 
 base_url = 'http://appdevi3-implantacao.azurewebsites.net/odata/BuscaPrevendas'
 headers = {
@@ -34,7 +29,7 @@ for number in tqdm(preventa_numbers, desc="Processing", unit="request"):
     url = f"{base_url}(texto='',periodo='todas')?{('&'.join([f'{k}={v}' for k, v in params.items()]))}"
 
     response = requests.get(url, headers=headers)
-    
+
     if response.status_code == 200:
         data = response.json()
         results[number] = data
